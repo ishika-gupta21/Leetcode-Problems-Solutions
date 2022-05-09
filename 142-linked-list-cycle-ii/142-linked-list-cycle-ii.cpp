@@ -23,12 +23,12 @@ public:
                 {
                     return slow;
                 }
-                while(fast->next != slow->next)
+                while(fast!= slow)
                 {
                     slow = slow->next;
                     fast = fast->next;
                 }
-                return slow->next;
+                return slow;
             }
         }
         return NULL;

@@ -4,7 +4,7 @@ public:
         int n=s.length();
         int c=0;
         int i=0;
-        while(i<n)
+        /*while(i<n)
         {
             char ch=s[i];
             if(ch=='I' && i+1<n && s[i+1]=='V')
@@ -56,6 +56,22 @@ public:
             else
               c+=1000;
             i++;
+        }
+        return c;*/
+        unordered_map<char,int> map;
+        map['I']=1;
+        map['V']=5;
+        map['X']=10;
+        map['L']=50;
+        map['C']=100;
+        map['D']=500;
+        map['M']=1000;
+        for(int i=0;i<n;i++)
+        {
+            if(map[s[i]]<map[s[i+1]] && i+1<n)
+                c-=map[s[i]];
+            else
+                c+=map[s[i]];
         }
         return c;
     }

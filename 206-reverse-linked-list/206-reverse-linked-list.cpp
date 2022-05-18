@@ -14,7 +14,8 @@ public:
         ListNode *prev,*current,*nextnode;
         prev=NULL;
         current=nextnode=head;
-        while(nextnode!=NULL){
+        while(nextnode!=NULL)
+        {
             nextnode=nextnode->next;
             current->next=prev;
             prev=current;

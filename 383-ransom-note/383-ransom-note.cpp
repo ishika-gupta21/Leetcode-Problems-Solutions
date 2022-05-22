@@ -15,7 +15,6 @@ public:
                 return false;
             else
             {
-                if(m[ransomNote[i]]>=1)
                     m[ransomNote[i]]--;
             }
         }

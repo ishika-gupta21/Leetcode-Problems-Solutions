@@ -3,7 +3,8 @@ public:
     int findComplement(int num) 
     {
         int i=0,j=0;
-        while(i<num){
+        while(i<num)
+        {
         i=i+ pow(2,j);
         j++;
     }

@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> getConcatenation(vector<int>& nums)
     {
-        int n=nums.size();
+        /*int n=nums.size();
         vector<int> ans(2*n);
         for(int i=0;i<n;i++)
         {
@@ -14,6 +14,8 @@ public:
             ans[i]=nums[k];
             k++;
         }
-        return ans;
+        return ans;*/
+        nums.insert(nums.end(),nums.begin(),nums.end());
+            return nums;
     }
 };

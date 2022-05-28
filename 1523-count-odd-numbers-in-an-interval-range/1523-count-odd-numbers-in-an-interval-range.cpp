@@ -3,9 +3,13 @@ public:
     int countOdds(int low, int high) 
     {
         int c=0;
-        for(int i=low;i<=high;i++)
+        int i;
+        if(low%2==0)
+            i=low+1;
+        else
+            i=low;
+        for(;i<=high;i+=2)
         {
-            if(i%2!=0)
                 c++;
         }
         return c;

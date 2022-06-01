@@ -2,7 +2,7 @@ class Solution {
 public:
     int numIdenticalPairs(vector<int>& nums) 
     {
-        /*int n=nums.size();
+        int n=nums.size();
         int c=0;
         for(int i=0;i<n;i++)
         {
@@ -12,8 +12,8 @@ public:
                     c++;
             }
         }
-        return c;*/
-        int n = nums.size();
+        return c;
+        /*int n = nums.size();
         map<int, int> mp;
         for(int i=0;i<n;i++)
         {
@@ -26,6 +26,6 @@ public:
         {
             count += (item.second*(item.second-1))/2;
         }
-        return count;
+        return count;*/
     }
 };

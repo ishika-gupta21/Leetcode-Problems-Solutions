@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     string addBinary(string a, string b) 
     {
@@ -29,7 +30,7 @@ public:
         if(carry)res+='0'; 
           else res+='1' ;
       }       
-     else if (a[i]== '0' && b[i]=='0' )  //case 0 + 0 
+     else if (a[i]== '0' && b[i]=='0' )
      {    
        if(carry)res+='1'; 
           else res+='0' ; 

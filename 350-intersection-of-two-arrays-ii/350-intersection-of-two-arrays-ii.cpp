@@ -16,7 +16,6 @@ public:
                  ans.push_back(nums2[i]);
              }
         }
-        
          return ans;
     }
 };

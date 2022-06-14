@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     vector<vector<int>> generate(int numRows) 
     {
@@ -13,7 +14,6 @@ public:
             }
             if(i>0)
             temp.push_back(1);
-            
             res.push_back(temp);
         }
         return res;

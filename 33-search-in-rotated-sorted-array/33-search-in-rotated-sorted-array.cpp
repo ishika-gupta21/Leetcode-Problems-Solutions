@@ -12,7 +12,7 @@ public:
             if (nums[low] <= nums[mid])
             {
                 if(target >= nums[low] and target <= nums[mid])
-                    high = mid;
+                    high = mid-1;
                 else 
                     low = mid + 1;
             }

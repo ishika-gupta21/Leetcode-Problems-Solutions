@@ -1,23 +1,22 @@
 class MyHashMap {
 public:
-    int a[1000001];      
-    MyHashMap() 
-    {
-        for(int i=0;i<1000001;i++)
-            a[i]=-1;
-    }
+    unordered_map<int,int> map;
+    MyHashMap() {}
     void put(int key, int value) 
     {
-        a[key]=value;
+        map[key] = value;
     }
     int get(int key)
     {
-        return a[key];
+        if(map.find(key) != map.end())
+          return map[key];
+      return -1;
     }
-    void remove(int key) 
+    void remove(int key)
     {
-        a[key]=-1;
+        map.erase(key);
     }
+
 };
 
 /**

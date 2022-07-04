@@ -12,7 +12,6 @@ public:
             if(prod == 0)
                 prod = 1;
         }
-        
         prod = 1;
         for(int i=n-1; i>=0; i--)
         {
@@ -21,7 +20,6 @@ public:
             if(prod == 0)
                 prod = 1;
         }
-        
         return maxProd;
     }
 };

@@ -12,16 +12,18 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) 
     {
-        ListNode *p=head,*n=head->next;
-        head->next=NULL;
-        while(n)
+        ListNode *prev,*current,*nextnode;
+        prev=NULL;
+        current=nextnode=head;
+        while(nextnode!=NULL)
         {
-            head=n;
-            n=n->next;
-            head->next=p;
-            p=head;
+            nextnode=nextnode->next;
+            current->next=prev;
+            prev=current;
+            current=nextnode;
         }
-     return head;
+        head=prev;
+        return head;
     }
     bool isPalindrome(ListNode* head) 
     {

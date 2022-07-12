@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int findMin(vector<int>& nums) {
+    int findMin(vector<int>& nums)
+    {
         int n=nums.size();
         int b=0,e=n-1;
         int mid=0;

@@ -10,7 +10,7 @@ class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
     {
-        map<ListNode*,int>a;
+        /*map<ListNode*,int>a;
         while(headA!=NULL)
         {
             a[headA]++;
@@ -19,7 +19,17 @@ public:
         while(headB!= NULL)
         {  if (a[headB])return headB;
             headB=headB->next;}
-        return NULL;
+        return NULL;*/
+        if(headA == NULL || headB == NULL) 
+            return NULL;
+        ListNode *a = headA;
+        ListNode *b = headB;
+        while(a != b)
+        {
+            a = (a == NULL) ? headB : a->next;
+            b = (b == NULL) ? headA : b->next;
+        }
+        return a;
         
     }
 };

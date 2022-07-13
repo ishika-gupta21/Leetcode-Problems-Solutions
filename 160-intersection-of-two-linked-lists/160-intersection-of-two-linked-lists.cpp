@@ -20,5 +20,6 @@ public:
         {  if (a[headB])return headB;
             headB=headB->next;}
         return NULL;
+        
     }
 };

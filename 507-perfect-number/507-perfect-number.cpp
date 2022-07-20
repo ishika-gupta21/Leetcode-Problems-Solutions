@@ -2,12 +2,14 @@ class Solution {
 public:
     bool checkPerfectNumber(int num) 
     {
-        int s=0;
-        for(int i=1;i<=num/2;i++)
+        if(num==1)
+            return false;
+        long int sum=1;
+        for(int i=2;i<sqrt(num);i++)
         {
             if(num%i==0)
-                s+=i;
+                sum+=(i+num/i);
         }
-        return s==num;
+        return num==sum;
     }
 };

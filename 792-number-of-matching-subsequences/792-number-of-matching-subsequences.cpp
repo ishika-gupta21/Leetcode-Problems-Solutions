@@ -1,31 +1,27 @@
 class Solution {
 public:
-    bool check(string s,string w)
+    bool hasMatches(string &curr, string &s)
     {
-        int i1=0,i2=0;
-        while(true)
+        int pos = 1;
+        int i = s.find(curr[0]);
+        if (i == -1)
+            return false;
+        while (pos < curr.length()) 
         {
-            if(i2==w.length())
-                return true;
-            int a=s.find(w[i2],i1);
-            if(a<0)
+            i = s.find(curr[pos], i + 1);
+            if (i == -1)
                 return false;
-            else
-            {
-                i2++;
-                i1=a+1;
-            }
+            pos++;
         }
         return true;
     }
     int numMatchingSubseq(string s, vector<string>& words) 
     {
-        int c=0;
-        for(int i=0;i<words.size();i++)
-        {
-            if(check(s,words[i])==true)
-                c++;
-        }
-        return c;
+        int count = 0;
+        for (string str : words)
+            if (hasMatches(str, s))
+                count++;
+        return count;
+
     }
 };

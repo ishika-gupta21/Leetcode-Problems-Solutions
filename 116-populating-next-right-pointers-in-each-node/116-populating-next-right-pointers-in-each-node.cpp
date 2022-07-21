@@ -26,8 +26,8 @@ public:
             root->left->next=root->right;
         if(root->right!=NULL &&  root->next!=NULL)
             root->right->next=root->next->left;
-        connect(root->left);
-        connect(root->right);
+        root->left=connect(root->left);
+        root->right=connect(root->right);
         return root;
     }
 };

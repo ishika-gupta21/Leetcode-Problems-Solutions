@@ -7,8 +7,7 @@ public:
         int min_sum = INT_MAX;
         for(int i=0; i<list1.size(); i++) 
         {
-            string key = list1[i];
-            pos[key] = i+1;
+            pos[list1[i]] = i+1;
         }
         for(int i=0; i<list2.size(); i++)
         {

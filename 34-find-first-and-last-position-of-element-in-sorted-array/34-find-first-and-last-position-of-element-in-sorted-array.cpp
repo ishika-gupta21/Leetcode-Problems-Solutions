@@ -7,7 +7,8 @@ public:
         if (nums.size() == 1 && nums[0] == target)
             return {0, 0};
         int first = 0, last = nums.size() - 1;
-        while (first <= last) {
+        while (first <= last)
+        {
             if (nums[first] != target)
                 ++first;
             if (nums[last] != target)

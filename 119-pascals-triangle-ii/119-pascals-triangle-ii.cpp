@@ -12,7 +12,7 @@ public:
                 temp.push_back(res[i-1][j]+res[i-1][j-1]);
             }
             if(i>0)
-            temp.push_back(1);
+                temp.push_back(1);
             res.push_back(temp);
         }
         return res[rowIndex];

@@ -12,7 +12,7 @@ public:
         {
 			if(cnt <= n*n)
             {
-				for(int i = sRow; i <= eCol; i++)
+				for(int i = sCol; i <= eCol; i++)
                 {
 					ans[sRow][i] = cnt;
 					cnt++;

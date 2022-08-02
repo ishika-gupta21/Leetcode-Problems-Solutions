@@ -1,17 +1,24 @@
 class Solution {
 public:
-    int leastInterval(vector<char>& tasks, int n)
+    int leastInterval(vector<char>& v, int n)
     {
-        int len = tasks.size(), mostFreq = INT_MIN, mostFreqQuantity, freqs[26] = {};
-        if (!n) return len;
-        for (auto e: tasks) freqs[e - 'A']++;
-        for (int n: freqs)
-        {
-            if (n == mostFreq)
-                mostFreqQuantity++;
-            else if (n > mostFreq)
-                mostFreq = n, mostFreqQuantity = 1;
-        }
-        return max(len, (mostFreq - 1) * (n + 1) + mostFreqQuantity);
+        int sz=v.size();
+      if(!n)
+        return sz;
+      vector<int>mp(26,0);
+      for(char i:v)
+        ++mp[i-'A'];
+      sort(mp.begin(),mp.end());
+      while(!mp[0])
+        mp.erase(mp.begin());
+      int gapcnt=mp.back()-1,gaps=gapcnt*n;
+      mp.pop_back();
+      while(!mp.empty())
+      {
+        int i=mp.back();
+        mp.pop_back();
+        gaps-=min(i,gapcnt);
+      }
+      return gaps<0?sz:gaps+sz;
     }
 };

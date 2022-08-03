@@ -2,7 +2,8 @@ class Solution {
 public:
     string addStrings(string num1, string num2) 
     {
-          if(num1.size() > num2.size()) swap(num1,num2);
+          if(num1.size() > num2.size()) 
+              swap(num1,num2);
           int rest = 0, i = num1.size() - 1, j = num2.size() - 1;
           while(i >= 0)
           {

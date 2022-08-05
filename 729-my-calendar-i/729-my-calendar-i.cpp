@@ -1,23 +1,26 @@
 class MyCalendar {
 public:
-    map<int, int> times;
+    map<int, int> mp;
     MyCalendar() {
         
     }
     
     bool book(int start, int end) 
     {
-          auto t = times.lower_bound(start);
-          if(t != times.end() && (t->first == start || t->first < end)) 
-              return false;
-          if(t != times.begin())
-          {
-            --t;
-            if(t->second > start)
+        mp[start]++;
+        mp[end]--;
+        int sum=0;
+        for(auto it=mp.begin(); it!=mp.end(); it++)
+        {
+            sum += it->second;
+            if(sum>1)
+            {
+                mp[start]--;
+                mp[end]++;
                 return false;
-          }
-         times[start] = end;
-         return true;
+            }
+        }
+        return true;
     }
 };
 

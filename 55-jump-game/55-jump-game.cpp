@@ -1,23 +1,21 @@
 class Solution {
 public:
-    vector<int> num;
-    bool canReach( int n) 
+    bool canJump(vector<int>& v)
     {
-        if( n == 0)
+        int n=v.size();
+        int res=0;
+        int t=n-1;
+        if(t==0)
             return true;
-        if( num[n] == -1) 
+        if(v[0]==0)
             return false;
-        num[n] = -1;
-        for( int i = n-1; i >=0; i--)
+        for(int i=0;i<n-1;i++)
         {
-            if( num[i] >= n-i && canReach(i))
-                return true;
+            if(v[i]+i>res and res>=i)
+                res=v[i]+i;
         }
+        if(res>=t)
+            return true;
         return false;
-    }
-    bool canJump(vector<int>& nums)
-    {
-        num=nums;
-        return canReach(num.size()-1);
     }
 };

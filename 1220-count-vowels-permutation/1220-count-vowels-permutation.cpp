@@ -2,19 +2,17 @@ class Solution {
 public:
     int countVowelPermutation(int n)
     {
-        long long a=1,b=1,c=1,d=1,e=1;
-        long long sum=0;
-        int mod=1000000007;
-        for(int i=0;i<n;i++)
+        long a = 1, e = 1, i = 1, o = 1, u = 1, mod = pow(10, 9)+7;
+        long a2, e2, i2, o2, u2; 
+        for (int j = 2; j <= n; j++) 
         {
-            sum=(a+b+c+d+e)%mod;
-            long long arr[5]={a,b,c,d,e};
-            a=(arr[1]+arr[2]+arr[4])%mod;
-            b=(arr[0]+arr[2])%mod;
-            c=(arr[1]+arr[3])%mod;
-            d=(arr[2])%mod;
-            e=(arr[2]+arr[3])%mod;
+            a2 = (e + i + u) % mod;
+            e2 = (a + i) % mod;
+            i2 = (e + o) % mod;
+            o2 = i;
+            u2 = (o + i) % mod;
+            a = a2, e = e2, i = i2, o = o2, u = u2;
         }
-        return sum%mod;
+        return (a + e + i + o + u) % mod;
     }
 };

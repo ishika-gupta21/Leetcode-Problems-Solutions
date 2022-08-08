@@ -1,19 +1,13 @@
 class Solution {
 public:
-    int lengthOfLIS(vector<int>& a)
+    int lengthOfLIS(vector<int>& A)
     {
-      int n=a.size();
-      if(n<=1)
-        return n;
-      vector<int>dp;
-      for(auto i:a)
-      {
-        auto it=lower_bound(dp.begin(),dp.end(),i);
-        if(it==dp.end())
-          dp.emplace_back(i);
-        else if(*it > i)
-          *it = i;
-      }
-        return dp.size();
+        int len = 0;
+        for(auto cur : A) 
+            if(len == 0 || A[len-1] < cur) 
+                A[len++] = cur;       
+            else 
+                *lower_bound(begin(A), begin(A) + len, cur) = cur;
+        return len;
     }
 };

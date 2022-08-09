@@ -2,31 +2,42 @@ class Solution {
 public:
     int getMaxLen(vector<int>& nums) 
     {
-        int max_len=0,n=nums.size(),count=0;
-        int i=0,short_i=0,j=0;
-        while(j<n)
+        int lz=-1,maxi=0, n=nums.size(),nn=0;
+        for(int i=0;i<nums.size();i++)
         {
-            if(nums[j]!=0) 
+            if(nums[i]==0)
             {
-                if(nums[j]<0)
-                {
-                    count++;
-                        if(count==1)
-                            short_i=j+1;
-                }
-                j++;
-                if(count%2==0)
-                    max_len=max(max_len,j-i);
-                else
-                    max_len=max(max_len,j-short_i);
+                lz=i;
+                nn=0;
             }
-            else if(nums[j]==0)
+            if(nums[i]<0) 
+                nn++;
+            if(nn%2==0)
             {
-                i=short_i=j+1;
-                j++;
-                count=0;
-            }       
-        }       
-        return max_len;
+                if(lz==-1)
+                    maxi=max(maxi,i+1);
+                else
+                    maxi=max(maxi, i-lz);
+            }
+        }
+        lz=-1; nn=0;
+        for(int i=nums.size()-1;i>=0;i--)
+        {
+            if(nums[i]==0)
+            {
+                lz=i; 
+                nn=0;
+            }
+            if(nums[i]<0)
+                nn++;
+            if(nn%2==0)
+            {
+                if(lz==-1) 
+                    maxi=max(maxi,n-i); 
+                else 
+                    maxi=max(maxi, lz-i);
+            }
+        }
+        return maxi;
     }
 };

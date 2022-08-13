@@ -26,7 +26,8 @@ public:
             }
             else
             {
-                if(ans.back()[1] >= intervals[i][0]) ans.back()[1] = max(ans.back()[1], intervals[i][1]);
+                if(ans.back()[1] >= intervals[i][0]) 
+                    ans.back()[1] = max(ans.back()[1], intervals[i][1]);
                 else ans.push_back(intervals[i]);
             }
         }

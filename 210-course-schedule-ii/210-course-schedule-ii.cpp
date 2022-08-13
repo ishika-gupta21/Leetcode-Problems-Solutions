@@ -11,7 +11,6 @@ public:
 			topo[prerequisites[i][0]]++;
 			adj[prerequisites[i][1]].push_back(prerequisites[i][0]);
 		}
-
 		for(int i=0;i<n;i++)
 		{
 			if(topo[i]==0)
@@ -22,7 +21,6 @@ public:
 			int temp = q.front();
 			q.pop();
 			ans.push_back(temp);
-
 			for(auto it:adj[temp])
 			{
 				topo[it]--;

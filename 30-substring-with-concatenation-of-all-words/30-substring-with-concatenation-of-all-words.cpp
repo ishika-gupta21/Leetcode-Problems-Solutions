@@ -2,29 +2,37 @@ class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words)
     {
+        int len = words[0].size(), n = words.size(), ssize = s.size(), left, found;
         vector<int> res;
-        int n=words.size();
-        int m=words[0].size(); // each word has the same length;
-        int t = m*n;
-        if(s.size() < t) 
-            return res;
-        unordered_map<string, int> freq;
-        for(auto it:words)
-            freq[it]++;
-        for(int i=0; i<=s.size()-t; i++)
+        unordered_map<string, int> freq, tmp;
+        for (auto word : words) freq[word]++;
+        for (int i = 0; i < len; i++)
         {
-            unordered_map<string, int> mp = freq;
-            int j;
-            for(j=0; j<s.size(); j++)
+            tmp.clear();
+            left = i, found = 0;
+            for (int j = i; j <= ssize - len; j += len)
             {
-                string temp = s.substr(i+j*m, m); //create string of size m and starting index i+j*m
-                if(mp[temp]==0)
-                    break;
-                else
-                    mp[temp]--;
+                string curr = s.substr(j, len);
+                if (freq.find(curr) != freq.end())
+                {
+                    tmp[curr]++;
+                    found++;
+                    while (freq[curr] < tmp[curr]) 
+                    {
+                        tmp[s.substr(left, len)]--;
+                        found--;
+                        left += len;
+                    }
+                    if (found == n) res.push_back(left);
+                }
+                
+                else 
+                {
+                    tmp.clear();
+                    found = 0;
+                    left = j + len;
+                }
             }
-            if(j==n) //check whether all word in words are in the string or not 
-                res.push_back(i);
         }
         return res;
     }

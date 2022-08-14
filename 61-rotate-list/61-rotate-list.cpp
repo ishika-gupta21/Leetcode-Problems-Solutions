@@ -14,7 +14,7 @@ public:
     {
         if(head==NULL || head->next==NULL ||k==0)
             return head;
-                int c=1;
+        int c=1;
         ListNode * temp= head;
         while(temp->next)
         {

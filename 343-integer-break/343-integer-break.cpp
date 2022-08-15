@@ -2,22 +2,21 @@ class Solution {
 public:
     int integerBreak(int n) 
     {
-        if(n==2)
+        if (n == 2)
             return 1;
-        if(n==3)
+        if (n == 3)
             return 2;
-        if(n==4)
+        if (n == 4)
             return 4;
-        vector<int>dp(n+1,0);
-        dp[1]=1;
-        dp[2]=2;
-        dp[3]=3;
-        dp[4]=4;
-        for(int i=5;i<=n;i++)
-        {
-            for(int j=1;j<i;j++)
-                dp[i]= max(dp[i],dp[j]*dp[i-j]);
-        }
-        return dp[n];
+        int k = n / 3;
+        int m = n % 3;
+        int ans;
+        if (m == 0)
+            ans = pow(3, k);
+        else if (m == 1)
+            ans = pow(3, k - 1) * 4;
+        else if (m == 2)
+            ans = pow(3, k) * m;
+        return ans;
     }
 };

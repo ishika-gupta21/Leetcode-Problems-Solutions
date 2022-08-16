@@ -1,38 +1,50 @@
+#define MAX 1000001
+#define pb push_back
 class Solution {
 public:
-    int numBusesToDestination(vector<vector<int>>& routes, int s, int t) 
+    int numBusesToDestination(vector<vector<int>>& routes, int S, int T) 
     {
-        int n = routes.size();
-        unordered_map<int, vector<int>> mp;
-        for(int i=0;i<n;i++)
+        int v = routes.size();
+        if(S == T) return 0;
+        vector<int> adj[v];
+        vector<int> stops(MAX,-1);
+        for(int i = 0; i<v; i++)
         {
-            for(auto ti:routes[i])
-                mp[ti].push_back(i);
-        }
-        if(!mp[s].size())
-            return -1;
-        if(!mp[t].size())
-            return -1;
-        unordered_set<int> st;
-        queue<pair<int,int>> q;
-        q.push({s,0});
-        while(q.size())
-        {
-            auto temp = q.front();
-            q.pop();
-            int x = temp.first;
-            int c = temp.second;
-            if(x==t)
-                return c;
-            for(auto it:mp[x])
+            for(int j = 0; j<routes[i].size(); j++)
             {
-                for(auto ch:routes[it])
+                int x = routes[i][j];
+                if(stops[x] != -1) 
                 {
-                    if(st.find(ch)==st.end())
-                    {
-                        q.push({ch,c+1});
-                        st.insert(ch);
-                    }
+                    int f = stops[x];
+                    int s = i;
+                    adj[f].pb(s);
+                    adj[s].pb(f);
+                }
+                stops[x] = i;
+            }
+            if(stops[S] == stops[T] && stops[S]!= -1)
+                return 1;
+        }
+        vector<bool> visited(v);
+        queue<pair<int,int>> pq;
+        int start = stops[S];
+        if(start == -1) return -1;
+        int target = stops[T];
+        if(target == -1) return -1;
+        pq.push({start,1});
+        visited[start] = true;
+        while(!pq.empty())
+        {
+            int curr = pq.front().first;
+            int trips = pq.front().second;
+            if(curr == target) return trips;
+            pq.pop();
+            for(auto it : adj[curr])
+            {
+                if(!visited[it])
+                {
+                    visited[it] = true;
+                    pq.push({it,trips+1});
                 }
             }
         }

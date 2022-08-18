@@ -12,16 +12,30 @@ class Solution {
 public:
     void reorderList(ListNode* head)
     {
-        ListNode* p;
-        while(head && head->next && head->next->next)
+        ListNode *q1=head,*q2=head;
+        while(q2!=NULL && q2->next!=NULL)
         {
-            p=head;
-            while(p->next->next)
-                p=p->next;
-            p->next->next=head->next;
-            head->next=p->next;
-            p->next=NULL;
-            head=head->next->next;
+            q1=q1->next;
+            q2=q2->next->next;
+        }
+        q2=q1->next;
+        q1->next=NULL;
+        stack<int>n;
+        while(q2!=NULL)
+        {
+            n.push(q2->val);
+            q2=q2->next;
+        }
+        q1=head;
+        while(q1!=NULL)
+        {
+            ListNode *temp=new ListNode;
+            if(n.empty()) break;
+            temp->val=n.top();
+            n.pop();
+            temp->next=q1->next;
+            q1->next=temp;
+            q1=q1->next->next;
         }
     }
 };

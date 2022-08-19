@@ -9,7 +9,8 @@ public:
         {
             if(sum < target)
                 sum += arr[j];
-            if(sum >= target){
+            if(sum >= target)
+            {
                 while(i <= j and sum >= target)
                 {
                     sum -= arr[i];

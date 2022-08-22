@@ -1,17 +1,19 @@
 class Solution {
 public:
+    int func(vector<int>& prices,int index,int n,bool bought,vector<vector<int>> &dp){
+        if(index>=n)
+            return 0;
+        if(dp[index][bought]!=-1)
+            return dp[index][bought];
+        if(bought)
+            return dp[index][bought] = max(prices[index]+func(prices,index+2,n,false,dp),func(prices,index+1,n,true,dp));
+        else
+            return dp[index][bought] = max(-prices[index]+func(prices,index+1,n,true,dp),func(prices,index+1,n,false,dp));
+    }
     int maxProfit(vector<int>& prices) 
     {
-        int sold=0;
-		int hold=INT_MIN;
-		int res=0;
-		for(auto x:prices)
-        {
-			int pre_res=res;
-			res=max(res,sold);
-			sold=hold+x;
-			hold=max(hold,pre_res-x);
-		} 
-		return max(sold,res);
+        int n  = prices.size();
+        vector<vector<int>> dp(n,vector<int>(2,-1));
+        return func(prices,0,n,false,dp);
     }
 };

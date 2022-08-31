@@ -30,7 +30,8 @@ public:
         while(q1!=NULL)
         {
             ListNode *temp=new ListNode;
-            if(n.empty()) break;
+            if(n.empty()) 
+                break;
             temp->val=n.top();
             n.pop();
             temp->next=q1->next;

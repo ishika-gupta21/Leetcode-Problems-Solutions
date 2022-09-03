@@ -14,7 +14,6 @@ public:
                 Solve(len-1 , k, num*10 + i, i);
         }
     }
-public:
     vector<int> numsSameConsecDiff(int n, int k) 
     {
         for(int i = 1 ; i<=9 ; i++)

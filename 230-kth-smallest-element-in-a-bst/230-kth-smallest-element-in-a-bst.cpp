@@ -13,17 +13,17 @@ class Solution {
 public:
     void dfs(TreeNode* root, int k, int &cnt, int &ans) 
     {
-        if(!root || cnt == k)
+        if(!root || cnt==k)
             return;
-        dfs(root -> left, k, cnt, ans);
+        dfs(root->left, k, cnt, ans);
         cnt++;
         if(cnt == k) 
-            ans = root -> val;
-        dfs(root -> right, k, cnt, ans);
+            ans = root->val;
+        dfs(root->right, k, cnt, ans);
     }
     int kthSmallest(TreeNode* root, int k) 
     {
-        int cnt = 0, ans = 0;
+        int cnt =0,ans =0;
         dfs(root, k, cnt, ans);
         return ans;
     }

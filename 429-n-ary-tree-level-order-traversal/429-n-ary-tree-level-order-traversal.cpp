@@ -25,15 +25,15 @@ public:
     {
         if(!root)
             return;
-        if(level == ans.size()) 
+        if(level==ans.size()) 
             ans.push_back({});
         ans[level].push_back(root->val);
-        for(auto i : root->children)
+        for(auto i:root->children)
             dfs(i, level+1);        
     }
     vector<vector<int>> levelOrder(Node* root)
     {
-        dfs(root, 0);
+        dfs(root,0);
         return ans;
     }
 };

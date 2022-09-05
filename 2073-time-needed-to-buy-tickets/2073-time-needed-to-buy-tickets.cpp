@@ -21,6 +21,6 @@ public:
                     time+=(tickets[k]-1);
             }
         }
-    return time;
+        return time;
     }
 };

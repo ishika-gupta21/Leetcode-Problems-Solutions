@@ -3,7 +3,8 @@ public:
     int maxPoints(vector<vector<int>>& points)
     {
         int n = points.size(), ans =1;
-        for(int i=0;i<n-1;i++){
+        for(int i=0;i<n-1;i++)
+        {
             unordered_map<double, int> m;
             for(int j=i+1;j<n;j++)
             {

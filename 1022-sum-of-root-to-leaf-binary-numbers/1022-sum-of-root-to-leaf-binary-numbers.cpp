@@ -11,20 +11,17 @@
  */
 class Solution {
 public:
-    int sum=0;
-    void preorder(TreeNode* root,int num)
+    int sumRootToLeaf(TreeNode *root,int sum)
     {
-        if(root==NULL) 
-            return;
-        num=(num<<1)|root->val;
-        if(root->left==NULL && root->right==NULL) 
-            sum+=num;
-        preorder(root->left,num);
-        preorder(root->right,num);
+        if(!root) 
+            return 0;
+        sum = (2*sum)+root->val;
+        if(!root->left && !root->right) 
+            return sum;
+        return sumRootToLeaf(root->left,sum) + sumRootToLeaf(root->right,sum);
     }
     int sumRootToLeaf(TreeNode* root) 
     {
-        preorder(root,0);
-        return sum;
+        return sumRootToLeaf(root,0);
     }
 };

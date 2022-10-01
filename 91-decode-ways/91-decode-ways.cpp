@@ -9,7 +9,7 @@ public:
             return 0;
         else 
             f[1] = 1, f[0] = 1;
-        for (int i = 1; i < n; i ++)
+        for (int i = 1; i < n; i++)
         {
             int t = s[i] - '0';
             if (t > 0) f[i + 1] += f[i];

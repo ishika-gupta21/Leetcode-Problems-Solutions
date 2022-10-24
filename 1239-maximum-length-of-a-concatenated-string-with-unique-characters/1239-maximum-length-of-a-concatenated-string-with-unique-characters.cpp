@@ -1,22 +1,22 @@
-vector<int>v;
-int n;
-int ans;
-void check(int ind,int cur)
-{
-    if(ind==n)
-    {
-        return ;
-    }
-    if((cur^v[ind])==(cur|v[ind]))
-    {
-        // cout<<"hi";
-        ans = max(ans,__builtin_popcount(cur|v[ind]));
-        check(ind+1,cur|v[ind]);
-    }
-    check(ind+1,cur);
-}
 class Solution {
 public:
+    vector<int>v;
+    int n;
+    int ans;
+    void check(int ind,int cur)
+    {
+        if(ind==n)
+        {
+            return ;
+        }
+        if((cur^v[ind])==(cur|v[ind]))
+        {
+            // cout<<"hi";
+            ans = max(ans,__builtin_popcount(cur|v[ind]));
+            check(ind+1,cur|v[ind]);
+        }
+        check(ind+1,cur);
+    }
     int maxLength(vector<string>& arr) {
         v = {};
         ans = 0;

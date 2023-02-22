@@ -12,5 +12,6 @@ public:
                 cursum=0;
         }
         return maxsum;
+        //Kadane's algorithm for finding the maximum sum subarray.
     }
 };

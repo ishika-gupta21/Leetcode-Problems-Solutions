@@ -3,36 +3,25 @@ public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) 
     {
         vector<vector<int>> ans;
-        bool flag = false;
-        for(int i = 0; i < intervals.size(); i++)
+        int n=intervals.size();
+        for(int i=0;i<n;i++)
         {
-            if(!flag)
+            if(intervals[i][0]>newInterval[1])
             {
-                if(intervals[i][0] < newInterval[0])
-                {
-                    if(intervals[i][1] >= newInterval[0]) 
-                    {
-                        intervals[i][1] = max(intervals[i][1], newInterval[1]);
-                        flag = true;
-                    }
-                    ans.push_back(intervals[i]);
-                }
-                else
-                {
-                    ans.push_back(newInterval);
-                    flag = true;
-                    i--;
-                }    
+                ans.push_back(newInterval);
+                newInterval=intervals[i];
             }
-            else
+            else if(intervals[i][1]<newInterval[0])
             {
-                if(ans.back()[1] >= intervals[i][0]) 
-                    ans.back()[1] = max(ans.back()[1], intervals[i][1]);
-                else ans.push_back(intervals[i]);
+                ans.push_back(intervals[i]);
+            }
+            else if(intervals[i][0]<=newInterval[1] || intervals[i][1]>=newInterval[0])
+            {
+                newInterval[0]=min(intervals[i][0],newInterval[0]);
+                newInterval[1]=max(intervals[i][1],newInterval[1]);
             }
         }
-        if(!flag)
-            ans.push_back(newInterval);
+        ans.push_back(newInterval);
         return ans;
     }
 };

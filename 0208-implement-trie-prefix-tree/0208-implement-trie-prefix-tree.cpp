@@ -1,40 +1,26 @@
 class Trie {
+    set<string> set;
 public:
     Trie() {}
-
-    void insert(string word) {
-        Trie* node = this;
-        for (char ch : word) {
-            ch -= 'a';
-            if (!node->next[ch]) { node->next[ch] = new Trie(); }
-            node = node->next[ch];
-        }
-        node->isword = true;
+    void insert(string word) 
+    {
+        set.insert(word);
     }
-
-    bool search(string word) {
-        Trie* node = this;
-        for (char ch : word) {
-            ch -= 'a';
-            if (!node->next[ch]) { return false; }
-            node = node->next[ch];
-        }
-        return node->isword;
+    bool search(string word) 
+    {
+        return set.count(word);
     }
-
-    bool startsWith(string prefix) {
-        Trie* node = this;
-        for (char ch : prefix) {
-            ch -= 'a';
-            if (!node->next[ch]) { return false; }
-            node = node->next[ch];
-        }
-        return true;
+    bool startsWith(string prefix) 
+    {
+        if (set.count(prefix) > 0)
+            return true;
+        auto p = set.insert(prefix);
+        bool found = false;
+        if ((++p.first) != set.end())
+            found = (*p.first).find(prefix) == 0;
+        set.erase(--p.first);
+        return found;
     }
-
-private:
-    Trie* next[26] = {};
-    bool isword = false;
 };
 
 /**
